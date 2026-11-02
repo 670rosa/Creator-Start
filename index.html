@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7eaff">
+<title>Creator Start</title>
+<style>
+:root{--pink:#ed91c7;--purple:#9274d8;--blue:#83b9e8;--ink:#382d49;--muted:#766b83;--paper:#fffaff;--line:#f0dff3}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#fff4fb,#f2edff 55%,#edf7ff);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+button,select{font:inherit}button{cursor:pointer;border:0}
+.app{max-width:1000px;margin:auto;padding:20px 16px 48px;min-height:100vh}
+header{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 22px}
+.brand{font-weight:900;font-size:1.2rem;letter-spacing:-.5px}.brand span{color:#bd65a5}
+.pill{font-size:.8rem;color:#755c9b;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:99px}
+.hero{background:linear-gradient(120deg,#f7c8e6,#d9c9fb 58%,#c9e8fb);border-radius:30px;padding:clamp(26px,6vw,58px);text-align:center;box-shadow:0 15px 35px #bda5d533;position:relative;overflow:hidden}
+.spark{font-size:2.2rem}.hero h1{font-size:clamp(2.4rem,8vw,4.6rem);letter-spacing:-3px;margin:8px 0;color:#4c3766}.hero p{font-size:1.05rem;max-width:540px;margin:0 auto 24px;line-height:1.6;color:#59476b}
+.primary{background:#8e6bce;color:white;padding:13px 23px;border-radius:15px;font-weight:800;box-shadow:0 6px 14px #7554b533}.primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
+main{margin-top:24px}.hidden{display:none!important}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:26px 2px 14px}.section-head h2{margin:0;font-size:1.45rem}.section-head p{margin:4px 0 0;color:var(--muted);font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:#ffffffd9;border:1px solid var(--line);border-radius:20px;padding:19px;box-shadow:0 7px 20px #9b7eb018}
+.card h3{margin:7px 0}.card p{color:var(--muted);line-height:1.5;margin:5px 0 14px}.emoji{font-size:1.7rem}
+.soft{background:#f5edff;color:#7456a5;border-radius:12px;padding:10px 13px;font-weight:750}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.nav button{background:#fff;border:1px solid var(--line);border-radius:99px;padding:9px 14px;color:#69567d;font-weight:700}.nav button.active{background:#8e6bce;color:white;border-color:#8e6bce}
+.panel{background:#fffdfF;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 7px 20px #9b7eb018}
+select{width:100%;padding:13px;border:1px solid #dfcde9;border-radius:12px;background:white;color:var(--ink);margin:8px 0 14px}
+.idea{padding:12px 14px;background:#f8f2ff;border-radius:12px;margin:8px 0}
+.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;background:#faf6ff;border-radius:14px}.num{background:#e9dafa;color:#6e4c9c;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;font-weight:900;flex:none}
+input[type=checkbox]{accent-color:#9471d2;width:18px;height:18px}
+footer{text-align:center;color:#8a7e96;font-size:.82rem;padding:30px 8px 0;line-height:1.6}
+.small{font-size:.86rem;color:var(--muted)}
+@media(max-width:540px){.app{padding:12px 12px 32px}.pill{font-size:.72rem}.hero{border-radius:23px}.hero h1{letter-spacing:-2px}.section-head{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="brand">✨ <span>Creator</span> Start</div><div class="pill">Tu creatividad comienza aquí</div></header>
+<section id="home" class="hero">
+<div class="spark">🎀 ✨ 📹</div>
+<h1>Creator Start</h1>
+<p>No se trata de ser perfecto, se trata de empezar. Aprende, descubre tu estilo y encuentra ideas para crear contenido con confianza.</p>
+<button class="primary" onclick="openApp()">Comenzar →</button>
+</section>
+<main id="workspace" class="hidden">
+<div class="nav">
+<button class="active" data-tab="ideas" onclick="tab('ideas',this)">💡 Ideas</button>
+<button data-tab="learn" onclick="tab('learn',this)">📚 Aprende</button>
+<button data-tab="first" onclick="tab('first',this)">🎬 Mi primer video</button>
+</div>
+<section id="ideas">
+<div class="section-head"><div><h2>Generador de ideas</h2><p>Elige lo que te gusta y encuentra inspiración.</p></div></div>
+<div class="panel">
+<label for="topic"><strong>¿Qué contenido te gustaría crear?</strong></label>
+<select id="topic" onchange="makeIdeas()">
+<option value="Vlogs">📹 Vlogs</option><option value="GRWM">🎀 GRWM y rutinas</option><option value="Belleza">🧴 Belleza y cuidado personal</option><option value="Estudios">📚 Estudios y organización</option><option value="Juegos">🎮 Juegos y entretenimiento</option><option value="Manualidades">🎨 Manualidades</option><option value="Cocina">🍓 Cocina sencilla</option><option value="Música">🎵 Música y baile</option>
+</select>
+<div id="ideas-list"></div>
+</div>
+</section>
+<section id="learn" class="hidden">
+<div class="section-head"><div><h2>Aprende paso a paso</h2><p>Pequeñas lecciones para comenzar.</p></div></div>
+<div class="grid">
+<article class="card"><div class="emoji">🌟</div><h3>1. Descubre qué te gusta</h3><p>Piensa en tus pasatiempos, temas favoritos y cosas que disfrutas compartir.</p></article>
+<article class="card"><div class="emoji">🎨</div><h3>2. Encuentra tu estilo</h3><p>Elige colores, música y una forma de expresarte que se sienta auténtica.</p></article>
+<article class="card"><div class="emoji">📝</div><h3>3. Planea tu idea</h3><p>Escribe qué quieres mostrar y prepara tres momentos para tu video.</p></article>
+<article class="card"><div class="emoji">📱</div><h3>4. Aprende a grabar</h3><p>Busca buena luz, apoya el teléfono y habla con calma.</p></article>
+<article class="card"><div class="emoji">🛡️</div><h3>5. Crea de forma segura</h3><p>Cuida tu privacidad y pide ayuda a una persona adulta de confianza.</p></article>
+</div>
+</section>
+<section id="first" class="hidden">
+<div class="section-head"><div><h2>Mi primer video</h2><p>Una guía sencilla para organizar tu primera creación.</p></div></div>
+<div class="panel steps">
+<div class="step"><span class="num">1</span><div><strong>Elige un tema</strong><p class="small">Ejemplo: una rutina, un pasatiempo o una actividad creativa.</p></div></div>
+<div class="step"><span class="num">2</span><div><strong>Escribe tres ideas</strong><p class="small">¿Cómo empieza? ¿Qué vas a enseñar? ¿Cómo termina?</p></div></div>
+<div class="step"><span class="num">3</span><div><strong>Prepara tu espacio</strong><p class="small">Busca un lugar tranquilo y una iluminación cómoda.</p></div></div>
+<div class="step"><span class="num">4</span><div><strong>Graba a tu ritmo</strong><p class="small">Puedes repetir las tomas. No tiene que quedar perfecto.</p></div></div>
+<div class="step"><span class="num">5</span><div><strong>Revisa antes de compartir</strong><p class="small">Comprueba que no aparezcan datos privados y consulta con una persona adulta de confianza antes de publicar.</p></div></div>
+<label class="soft" style="display:flex;gap:10px;align-items:center"><input type="checkbox"> ¡Ya tengo mi plan para el primer video!</label>
+</div>
+</section>
+<div class="panel" style="margin-top:18px;background:#f4efff"><strong>🔒 Tu seguridad también importa</strong><p class="small">No compartas tu dirección, escuela, teléfono, ubicación en tiempo real ni horarios. Si eres menor, habla con una persona adulta de confianza antes de publicar o responder a desconocidos.</p></div>
+</main>
+<footer>Creator Start · Aprende, crea y comparte con responsabilidad.<br>Una idea a la vez. 💗</footer>
+</div>
+<script>
+const ideas={
+"Vlogs":["Un día conmigo (sin mostrar lugares privados)","Mi pasatiempo favorito","Acompáñame a organizar mi espacio","Tres cosas que alegraron mi día"],
+"GRWM":["Arréglate conmigo para una ocasión especial","Mi rutina para prepararme","Elige conmigo un outfit creativo","Prepárate conmigo para un día divertido"],
+"Belleza":["Mi rutina de cuidado personal","Cómo organizo mis productos","Mis favoritos de cuidado personal","Consejos que he aprendido"],
+"Estudios":["Organiza mi mochila conmigo (sin mostrar datos)","Mi espacio de estudio","Cómo organizo mis tareas","Ideas para decorar apuntes"],
+"Juegos":["Mi juego favorito","Probando un juego nuevo","Mis momentos favoritos jugando","Un reto divertido y seguro"],
+"Manualidades":["Crea una tarjeta conmigo","Decora un cuaderno","Haz una pulsera sencilla","Transforma algo con creatividad"],
+"Cocina":["Prepara una merienda sencilla con un adulto","Decora frutas","Mi receta familiar favorita con supervisión","Ideas para presentar una merienda"],
+"Música":["Mi lista de canciones favoritas (apropiadas)","Un baile divertido","Instrumentos que quiero aprender","Cómo practico una canción"]
+};
+function makeIdeas(){const topic=document.getElementById('topic').value;document.getElementById('ideas-list').innerHTML=ideas[topic].map((x,i)=>`<div class="idea"><strong>${i+1}.</strong> ${x}</div>`).join('')}
+function openApp(){document.getElementById('home').classList.add('hidden');document.getElementById('workspace').classList.remove('hidden');makeIdeas();window.scrollTo({top:0,behavior:'smooth'})}
+function tab(id,btn){['ideas','learn','first'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}
+</script>
+</body>
+</html>
